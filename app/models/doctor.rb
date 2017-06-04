@@ -6,4 +6,6 @@ class Doctor < ApplicationRecord
 
   has_many :records
   has_many :patients, through: :records
+
+  has_one :specialization
 end

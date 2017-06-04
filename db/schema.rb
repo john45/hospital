@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603211504) do
+ActiveRecord::Schema.define(version: 20170604083939) do
 
   create_table "avatars", force: :cascade do |t|
     t.string   "name"
@@ -26,11 +26,10 @@ ActiveRecord::Schema.define(version: 20170603211504) do
     t.string   "last_name"
     t.string   "middle_name"
     t.date     "born"
-    t.string   "specialization"
     t.integer  "manager_id"
     t.text     "about"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["manager_id"], name: "index_doctors_on_manager_id"
   end
 
@@ -62,6 +61,15 @@ ActiveRecord::Schema.define(version: 20170603211504) do
     t.datetime "updated_at",                 null: false
     t.index ["doctor_id"], name: "index_records_on_doctor_id"
     t.index ["patient_id"], name: "index_records_on_patient_id"
+  end
+
+  create_table "specializations", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["doctor_id"], name: "index_specializations_on_doctor_id"
   end
 
 end
