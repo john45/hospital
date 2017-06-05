@@ -22,8 +22,8 @@ class Doctor < ApplicationRecord
   has_many :records
   has_many :patients, through: :records
 
-  has_many :specializations
+  has_one :specialization
   has_one :doctor_worktime
 
-  validates :manager, presence: true, allow_nil: true, allow_blank: true
+  # validates :manager, presence: true, allow_nil: true, allow_blank: true
 end
