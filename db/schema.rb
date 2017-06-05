@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604083939) do
+ActiveRecord::Schema.define(version: 20170605185047) do
 
   create_table "avatars", force: :cascade do |t|
     t.string   "name"
@@ -21,16 +21,29 @@ ActiveRecord::Schema.define(version: 20170604083939) do
     t.index ["imageable_type", "imageable_id"], name: "index_avatars_on_imageable_type_and_imageable_id"
   end
 
+  create_table "doctor_worktimes", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.string   "days",           default: "[monday, tuesday, wednesday, thurteday, friday]"
+    t.integer  "start_hours",    default: 8
+    t.integer  "start_minutes",  default: 0
+    t.integer  "finish_hours",   default: 18
+    t.integer  "finish_minutes", default: 0
+    t.integer  "lunch_start",    default: 13
+    t.integer  "lunch_finish",   default: 14
+    t.datetime "created_at",                                                                 null: false
+    t.datetime "updated_at",                                                                 null: false
+    t.integer  "duration"
+  end
+
   create_table "doctors", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "middle_name"
     t.date     "born"
-    t.integer  "manager_id"
     t.text     "about"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["manager_id"], name: "index_doctors_on_manager_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "manager_id",  default: 0
   end
 
   create_table "patients", force: :cascade do |t|
