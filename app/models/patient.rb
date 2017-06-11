@@ -12,7 +12,7 @@
 #  updated_at   :datetime         not null
 #
 
-class Patient < ApplicationRecord
+class Patient < User
   has_one :avatar, as: :imageable
 
   has_many :records
