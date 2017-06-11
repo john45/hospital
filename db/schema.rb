@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170611085415) do
+ActiveRecord::Schema.define(version: 20170611121227) do
 
   create_table "avatars", force: :cascade do |t|
     t.string   "name"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 20170611085415) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "positions", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "specialization_id"
+    t.index ["doctor_id"], name: "index_positions_on_doctor_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -77,12 +85,10 @@ ActiveRecord::Schema.define(version: 20170611085415) do
   end
 
   create_table "specializations", force: :cascade do |t|
-    t.integer  "doctor_id"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["doctor_id"], name: "index_specializations_on_doctor_id"
   end
 
   create_table "users", force: :cascade do |t|

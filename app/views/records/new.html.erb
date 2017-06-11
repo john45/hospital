@@ -1,1 +1,23 @@
 <h1>hello record your visit</h1>
+
+<div class="row content">
+  <div class="col-sm-2">
+  <table>
+    <tr class='table_spec_header'>
+      <th>Специализация</th>
+    </tr>
+
+    <%= render @specializations %>
+
+  </table>
+  </div>
+  <div class="col-sm-2">
+    doctors use selectebla https://jqueryui.com/selectable/
+  </div>
+  <div class="col-sm-8">
+    <%= month_calendar do |date| %>
+      <%= date %>
+    <% end %>
+  </div>
+
+</div>

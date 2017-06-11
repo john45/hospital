@@ -3,13 +3,13 @@
 # Table name: specializations
 #
 #  id          :integer          not null, primary key
-#  doctor_id   :integer
 #  title       :string
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  position_id :integer
 #
 
 class Specialization < ApplicationRecord
-  belongs_to :doctor
+  has_many :positions
 end
