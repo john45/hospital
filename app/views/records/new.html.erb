@@ -1,20 +1,29 @@
-<h1>hello record your visit</h1>
-
 <div class="row content">
-  <div class="col-sm-2">
-  <table>
-    <tr class='table_spec_header'>
-      <th>Специализация</th>
-    </tr>
+  <div class="col-sm-4">
+    <p id="feedback">
+      <span>You've selected:</span> <span id="select-result-spec-category">none</span>.
+    </p>
 
-    <%= render @specializations %>
+    Специализация
+    <div class="specializations">
+      <ol id='selectable'>
+        <% @specializations.each do |specialization| %>
+          <li class='ui-widget-content' data-specid='<%= specialization.id %>'>
+            <%= specialization.title %>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
 
-  </table>
+  <div class="col-sm-4">
+    Doctors
+    <div id="doctors" class="doctors">
+    Нужно очистить
+    </div>
   </div>
-  <div class="col-sm-2">
-    doctors use selectebla https://jqueryui.com/selectable/
-  </div>
-  <div class="col-sm-8">
+
+  <div class="col-sm-4">
     <%= month_calendar do |date| %>
       <%= date %>
     <% end %>

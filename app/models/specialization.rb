@@ -7,9 +7,9 @@
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  position_id :integer
 #
 
 class Specialization < ApplicationRecord
   has_many :positions
+  has_many :doctors, through: :positions
 end

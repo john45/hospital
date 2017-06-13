@@ -2,10 +2,11 @@
 #
 # Table name: positions
 #
-#  id         :integer          not null, primary key
-#  doctor_id  :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                :integer          not null, primary key
+#  doctor_id         :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  specialization_id :integer
 #
 
 require 'test_helper'

@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(version: 20170611121227) do
 
   create_table "positions", force: :cascade do |t|
     t.integer  "doctor_id"
+    t.integer  "specialization_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "specialization_id"
     t.index ["doctor_id"], name: "index_positions_on_doctor_id"
   end
 
