@@ -1,0 +1,9 @@
+<div class="doctors">
+  <ol id='selectable1' class="ui-selectable">
+    <% @doctors.each do |doctor| %>
+      <li class='ui-widget-content ui-selectee' data-doctorid='<%= doctor.id %>'>
+        <%= doctor.first_name + ' ' + doctor.last_name %>
+      </li>
+    <% end %>
+  </ol>
+</div>

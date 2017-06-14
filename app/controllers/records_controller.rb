@@ -7,7 +7,7 @@ class RecordsController < ApplicationController
 
   def get_doctors
     # binding.pry
-    @doctors = Specialization.where()
+    @doctors = Specialization.find(params[:specialization].to_i).doctors
     respond_to do |format|
       format.html { redirect_to root_path}
       format.js {  }

@@ -38,12 +38,11 @@ end
 spec_list = ['ЛОР', 'Окулист', 'Хирург', 'Терапевт', 'Педиатр', 'Массажист']
 spec_list.each do |spec|
   sp = Specialization.create(title: spec, description: Faker::StarWars.quote)
+end
 
-  Doctor.all.each do |doctor|
-    dw = DoctorWorktime.new(duration: 1)
-    doctor.doctor_worktime = dw
-
-    Position.new(doctor: doctor, specialization: sp)
-
-  end
+Doctor.all.each do |doctor|
+  dw = DoctorWorktime.new(duration: 1)
+  doctor.doctor_worktime = dw
+  sp = Specialization.all.map { |spec| spec.id }
+  Position.create(doctor: doctor, specialization_id: sp.sample)
 end
