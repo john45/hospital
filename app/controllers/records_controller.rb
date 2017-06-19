@@ -3,6 +3,7 @@ class RecordsController < ApplicationController
   def new
     @specializations = Specialization.all
     @doctors = Doctor.all
+    @doc = Doctor.second
   end
 
   def get_doctors
@@ -16,7 +17,8 @@ class RecordsController < ApplicationController
 
   def show_doctor_event
     @doctor = Doctor.find(params[:doctor_id])
-    @choice_date = params[:choice_date]
+    @choice_date = Time.parse(params[:choice_date])
+    @doctor_records = @doctor.records.where("date_start >= ? and date_end <= ?", @choice_date, @choice_date.tomorrow - 1 )
 
     respond_to do |format|
       format.html { redirect_to root_path}
