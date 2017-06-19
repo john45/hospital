@@ -13,4 +13,16 @@ class RecordsController < ApplicationController
       format.js {  }
     end
   end
+
+  def show_doctor_event
+    @doctor = Doctor.find(params[:doctor_id])
+    @choice_date = params[:choice_date]
+
+    respond_to do |format|
+      format.html { redirect_to root_path}
+      format.js {  }
+    end
+  end
+
+
 end
