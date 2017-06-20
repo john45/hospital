@@ -1,6 +1,7 @@
 class RecordsController < ApplicationController
   before_action :authenticate_patient!
-  def new
+
+  def index
     @specializations = Specialization.all
     @doctors = Doctor.all
     @doc = Doctor.second
@@ -18,8 +19,9 @@ class RecordsController < ApplicationController
   def show_doctor_event
     @doctor = Doctor.find(params[:doctor_id])
     @choice_date = Time.parse(params[:choice_date])
-    @doctor_records = @doctor.records.where("date_start >= ? and date_end <= ?", @choice_date, @choice_date.tomorrow - 1 )
-
+    @doctor_records = @doctor.records.where("date_start >= ? and date_end <= ?",
+                                             @choice_date,
+                                             @choice_date.tomorrow - 1 )
     respond_to do |format|
       format.html { redirect_to root_path}
       format.js {  }

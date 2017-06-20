@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :patients
 
   get '/records/get_doctors', to: 'records#get_doctors'
+  get '/records/show_doctor_event', to: 'records#show_doctor_event'
 
-  get '/records/', to: 'records#new'
+  get '/records/', to: 'records#index'
 end

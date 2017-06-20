@@ -1,8 +1,17 @@
 $('#doctors').append("<%= j render('records/rend_doctors', locals: { :@doctors => @doctors }) %>");
+
 $( "#selectable1" ).selectable({
       stop: function() {
         var doctorid = $('#selectable1 .ui-selected').attr('data-doctorid');
-        alert(doctorid);
+
+
+
+        // alert(doctorid);
+
+        // $('.day.ui-selected').removeClass("ui-selected");
+
+
+
         // $.ajax({
         //   url: "/records/get_doctors",
         //   data: { specialization: spec},
