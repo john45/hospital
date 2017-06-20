@@ -1,7 +1,8 @@
-$('#doctors').append("<%= j render('records/rend_doctors', locals: { :@doctors => @doctors }) %>");
 
+$('#doctors').append("<%= j render('records/rend_doctors', locals: { :@doctors => @doctors }) %>");
 $( "#selectable1" ).selectable({
       stop: function() {
+        $('#events').empty();
         var doctorid = $('#selectable1 .ui-selected').attr('data-doctorid');
 
 

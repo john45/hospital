@@ -22,13 +22,18 @@ $(document).on('turbolinks:load', function() {
     $("tr").selectable({
       stop: function(){
         if ($('.doctor.ui-selected').length){
-          var choive_date = $(this).find('.current-month.ui-selected').text().trim();
-          var doctor_id = $('.doctor.ui-selected').attr('data-doctorid');
-          $.ajax({
-            url: "/records/show_doctor_event",
-            data: { choice_date: choive_date, doctor_id: doctor_id},
-            dataType: 'script'
-          });
+          var choice_date = $(this).find('.future.current-month.ui-selected, .today.current-month.ui-selected').text().trim();
+          if (choice_date != "") {
+            var doctor_id = $('.doctor.ui-selected').attr('data-doctorid');
+            $.ajax({
+              url: "/records/show_doctor_event",
+              data: { choice_date: choice_date, doctor_id: doctor_id},
+              dataType: 'script'
+            });
+          } else {
+            $('#events').empty();
+          }
+
         }
       }
     });

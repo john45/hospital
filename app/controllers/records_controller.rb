@@ -4,7 +4,6 @@ class RecordsController < ApplicationController
   def index
     @specializations = Specialization.all
     @doctors = Doctor.all
-    @doc = Doctor.second
   end
 
   def get_doctors
@@ -22,6 +21,10 @@ class RecordsController < ApplicationController
     @doctor_records = @doctor.records.where("date_start >= ? and date_end <= ?",
                                              @choice_date,
                                              @choice_date.tomorrow - 1 )
+    @events_list = []
+    @doctor_records.each { |event| @events_list << event.date_start.strftime('%H').to_i}
+    # binding.pry
+
     respond_to do |format|
       format.html { redirect_to root_path}
       format.js {  }
