@@ -3,7 +3,7 @@
   <% hour = i +  @doctor.doctor_worktime.start_hours.to_i %>
   <% if !@events_list.include?(hour) %>
 
-    <%= button_to  'Rcord!',
+    <%= button_to  "#{hour} - #{hour+1}",
                     new_record_path,
                     method: 'get',
                     type: 'button',
@@ -11,17 +11,17 @@
                     params: { doctor_id: @doctor.id,
                              date_start: hour,
                              choice_date: @choice_date } %>
-
-  <% elsif hour == @doctor.doctor_worktime.lunch_start %>
+<!--
+  <%# elsif (hour == @doctor.doctor_worktime.lunch_start.to_i) %>
 
     <button type="button" class="btn btn-info" disabled="disabled">
-    'Обед'
+    Обед
     </button>
-
+ -->
   <% else %>
 
     <button type="button" class="btn btn-primary" disabled="disabled">
-    'Занято'
+    Занято
     </button>
 
   <% end %>

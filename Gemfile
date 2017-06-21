@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'google-api-client', '~> 0.11', require: 'google/apis/calendar_v3'
 gem 'pry'
 gem 'devise'
 gem "simple_calendar", "~> 2.0"
