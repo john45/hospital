@@ -20,6 +20,6 @@ class DoctorWorktime < ApplicationRecord
   belongs_to :doctor
 
   def events_count
-    (((finish_hours - start_hours) - (lunch_finish - lunch_start))/1).to_i
+    (finish_hours - start_hours).to_i
   end
 end

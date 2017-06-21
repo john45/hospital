@@ -1,0 +1,12 @@
+avatar vracha <br>
+opisanie kakoy on klassniy <br>
+<hr>
+vsyaka fignya s pravilami i nizhe knopda record!
+<hr>
+<%= form_for @record, method: :post do |f| %>
+  <%= hidden_field_tag :doctor_id, @record.doctor_id %>
+  <%= hidden_field_tag :patient_id, @record.patient_id %>
+  <%= hidden_field_tag :date_start, @record.date_start %>
+  <%= hidden_field_tag :date_end, @record.date_end %>
+  <%= f.submit 'Записаться на прием', class: 'btn btn-success btn-lg btn-block'  %>
+<% end %>

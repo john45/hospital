@@ -6,8 +6,28 @@ class RecordsController < ApplicationController
     @doctors = Doctor.all
   end
 
+  def show
+  end
+
+  def new
+    @ds = Time.parse(params[:choice_date]) + params[:date_start].to_i.hour + 3.hour
+    @doctor = Doctor.find(params[:doctor_id])
+
+    @record = @doctor.records.build(patient_id: current_patient.id,
+                         date_start: @ds,
+                         date_end: @ds + @doctor.doctor_worktime.duration.to_i.hour)
+  end
+
+  def create
+    @record = Record.new(doctor_id: params[:doctor_id],
+                         patient_id: params[:patient_id],
+                         date_start: params[:date_start],
+                         date_end: params[:date_end])
+    @record.save
+    redirect_to records_path
+  end
+
   def get_doctors
-    # binding.pry
     @doctors = Specialization.find(params[:specialization].to_i).doctors
     respond_to do |format|
       format.html { redirect_to root_path}
@@ -30,6 +50,4 @@ class RecordsController < ApplicationController
       format.js {  }
     end
   end
-
-
 end
