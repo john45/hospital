@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'patients/show'
+
+  get 'patients/edit'
+
   root 'statics#home'
 
   devise_for :users
@@ -9,4 +13,5 @@ Rails.application.routes.draw do
   get '/records/', to: 'records#index'
 
   resources :records
+  resources :patients
 end

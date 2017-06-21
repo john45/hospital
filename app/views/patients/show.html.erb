@@ -1,0 +1,32 @@
+<div class="col-sm-4">
+fotka 150 na 150
+<hr>
+<br>
+opisanie i knopka redactirovaniya
+
+</div>
+
+<div class="col-sm-8">
+  <table style="border: 1px black solid;">
+    <th>
+      <td>id</td>
+      <td>when</td>
+      <td>на когда запись</td>
+      <td>spec</td>
+      <td>doctor</td>
+    </th>
+    <% @records.each do |record| %>
+      <tr>
+        <td style="border: 1px black solid;"><%= record.id %> </td>
+        <td style="border: 1px black solid;"><%= record.created_at.strftime('%F') %></td>
+        <td style="border: 1px black solid;"><%= record.date_start.strftime('%Y-%m-%d %k:%M') %></td>
+        <td style="border: 1px black solid;"><%= record.doctor.specialization.title  %></td>
+        <td style="border: 1px black solid;"><%= record.doctor.first_name + ' ' + record.doctor.last_name %></td>
+      </tr>
+    <% end %>
+  </table>
+  текущие незакрытые записи <br>
+  с возможностью разшарить
+  <hr>
+  история посещений
+</div>
