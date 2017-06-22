@@ -1,32 +1,35 @@
 <div class="col-sm-4">
-fotka 150 na 150
+<%= image_tag('ava150.jpg', size: '150x150', alt: 'Avatarka') %>
 <hr>
 <br>
-opisanie i knopka redactirovaniya
-
+<ul>
+  <li><%= current_patient.email %></li>
+  <li><%= current_patient.name %></li>
+  <li><%= current_patient.born %></li>
+  <li><%= link_to 'Изменить данные', patients_edit_path(current_patient), class: 'btn btn-success' %></li>
+</ul>
 </div>
 
 <div class="col-sm-8">
-  <table style="border: 1px black solid;">
-    <th>
-      <td>id</td>
-      <td>when</td>
-      <td>на когда запись</td>
-      <td>spec</td>
-      <td>doctor</td>
-    </th>
+  <table>
+    <tr>
+      <th style="width: 10px;">id</th>
+      <th style="width: 80px;">when</th>
+      <th style="width: 120px;">на когда запись</th>
+      <th style="width: 50px;">spec</th>
+      <th style="width: 120px;">doctor</th>
+      <th style="width: 50px;">Share to GoogleCalendar</th>
+    </tr>
     <% @records.each do |record| %>
       <tr>
-        <td style="border: 1px black solid;"><%= record.id %> </td>
-        <td style="border: 1px black solid;"><%= record.created_at.strftime('%F') %></td>
-        <td style="border: 1px black solid;"><%= record.date_start.strftime('%Y-%m-%d %k:%M') %></td>
-        <td style="border: 1px black solid;"><%= record.doctor.specialization.title  %></td>
-        <td style="border: 1px black solid;"><%= record.doctor.first_name + ' ' + record.doctor.last_name %></td>
+        <td style="width: 10px;"><%= record.id %> </td>
+        <td style="width: 80px;"><%= record.created_at.strftime('%F') %></td>
+        <td style="width: 120px;"><%= record.date_start.strftime('%Y-%m-%d %k:%M') %></td>
+        <td style="width: 50px;"><%= record.doctor.specialization.title  %></td>
+        <td style="width: 120px;"><%= record.doctor.first_name + ' ' + record.doctor.last_name %></td>
+        <td style="width: 50px;">Will soon :)</td>
       </tr>
     <% end %>
   </table>
-  текущие незакрытые записи <br>
-  с возможностью разшарить
-  <hr>
-  история посещений
+
 </div>

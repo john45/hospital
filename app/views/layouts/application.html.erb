@@ -19,18 +19,12 @@
         <%= render 'layouts/leftpanel' %>
 
       </div>
-    <div class="col-sm-8 text-left">
+    <div class="col-sm-10 text-left">
       <% if flash.any? %>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
       <% end %>
       <%= yield %>
-    </div>
-
-    <div class="col-sm-2">
-
-      <%#= render 'layouts/right_panel' %>
-
     </div>
 
   </div>

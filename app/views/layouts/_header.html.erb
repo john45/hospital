@@ -10,14 +10,25 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><%= link_to 'Поликлиника', root_path %></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Мой кабинет', patient_path(current_patient) %></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <% if patient_signed_in? %>
+          <li><%= link_to 'Мой кабинет', patient_path(current_patient) %></li>
+          <li>
+            <!-- <span class="glyphicon glyphicon-log-out"></span> -->
+            <%= link_to 'Logout', destroy_user_session_path,
+                                  class: "glyphicon glyphicon-log-out",
+                                  method: 'DELETE' %>
+          </li>
+
+        <% else %>
+          <li><%= link_to ' Login ', new_patient_session_path, class: "glyphicon glyphicon-log-in" %></li> OR
+          <li><%= link_to ' SignUP ', new_patient_registration_path, class: "glyphicon glyphicon-flash" %></li>
+        <% end %>
       </ul>
     </div>
   </div>
