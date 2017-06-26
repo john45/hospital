@@ -16,4 +16,6 @@
 class Record < ApplicationRecord
   belongs_to :doctor
   belongs_to :patient
+
+  default_scope { order(date_start: :desc) }
 end

@@ -27,7 +27,15 @@
         <td style="width: 120px;"><%= record.date_start.strftime('%Y-%m-%d %k:%M') %></td>
         <td style="width: 50px;"><%= record.doctor.specialization.title  %></td>
         <td style="width: 120px;"><%= record.doctor.first_name + ' ' + record.doctor.last_name %></td>
-        <td style="width: 50px;">Will soon :)</td>
+        <!-- <td style="width: 50px;"><%#= link_to 'add event to GC', new_event_path(session[:calendar_id]), record_id: record.id, method: 'POST' %></td> -->
+
+        <td style="width: 50px;">
+          <%= link_to 'add event to GC', { controller: 'google_auths',
+                                           action: 'new_event',
+                                           record_id: record.id,
+                                           calendar_id: session[:calendar_id] },
+                                        method: 'POST' if record.date_start >= Time.now %>
+        </td>
       </tr>
     <% end %>
   </table>

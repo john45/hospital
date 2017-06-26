@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  post '/events/:calendar_id', to: 'google_auths#new_event', as: 'new_event', calendar_id: /[^\/]+/
+  get '/events/:calendar_id', to: 'google_auths#events', as: 'events', calendar_id: /[^\/]+/
+  get '/redirect', to: 'google_auths#redirect', as: 'redirect'
+  get '/callback', to: 'google_auths#callback', as: 'callback'
+  get '/calendars', to: 'google_auths#calendars', as: 'calendars'
   get 'patients/show'
 
   get 'patients/edit'

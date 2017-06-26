@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
       }
     });
 
-    $("tr").selectable({
+    $("tr.calendar").selectable({
       stop: function(){
         if ($('.doctor.ui-selected').length){
           var choice_date = $(this).find('.future.current-month.ui-selected, .today.current-month.ui-selected').text().trim();
