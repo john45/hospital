@@ -59,6 +59,7 @@ class GoogleAuthsController < ApplicationController
   # end
 
   def new_event
+
     client = Signet::OAuth2::Client.new({
       client_id: Rails.application.secrets.google_client_id,
       client_secret: Rails.application.secrets.google_client_secret,
@@ -79,7 +80,10 @@ class GoogleAuthsController < ApplicationController
       start: Google::Apis::CalendarV3::EventDateTime.new(date: record.date_start.to_date),
       end: Google::Apis::CalendarV3::EventDateTime.new(date: record.date_end.to_date),
       reminders: Google::Apis::CalendarV3::EventDateTime.new(useDefault: true),
-      summary: "Прием у доктора #{record.doctor.first_name} #{record.doctor.first_name} по специализации: #{record.doctor.specialization.title}"
+      summary: "Прием у доктора
+      #{record.doctor.doctor_detail.first_name}
+      #{record.doctor.doctor_detail.last_name} по специализации:
+      #{record.doctor.specialization.title}"
     })
 
     service.insert_event(session[:calendar_id], event)

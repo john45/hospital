@@ -10,27 +10,26 @@
   Post.create(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraph(2, false, 4))
 end
 
-# Table name: doctor_worktimes
+# glavrach = Doctor.new(first_name: Faker::Name.first_name,
+#                          last_name: Faker::Name.last_name,
+#                          middle_name: Faker::Name.first_name,
+#                          born: (rand(25..55).year.ago),
+#                          about: Faker::Lorem.paragraph(2, false, 4))
+# glavrach.manager = glavrach
+# glavrach.save
 
- # id             :integer          not null, primary key
- # doctor_id      :integer
- # days           :string           default("[monday, tuesday, wednesday, thurteday, friday]")
-glavrach = Doctor.new(first_name: Faker::Name.first_name,
-                         last_name: Faker::Name.last_name,
-                         middle_name: Faker::Name.first_name,
-                         born: (rand(25..55).year.ago),
-                         about: Faker::Lorem.paragraph(2, false, 4))
-glavrach.manager = glavrach
-glavrach.save
-
-50.times do
-  doctor = Doctor.new(first_name: Faker::Name.first_name,
-                         last_name: Faker::Name.last_name,
-                         middle_name: Faker::Name.first_name,
-                         manager_id: rand(1..10),
-                         born: rand(25..55).year.ago,
-                         about: Faker::Lorem.paragraph(2, false, 4))
+50.times do |i|
+  doctor = Doctor.new(email: "mangamen45#{i}@gmail.com", password: '123456')
   doctor.save
+  puts doctor
+  doctor_details = DoctorDetail.new(first_name: Faker::Name.first_name,
+                         last_name: Faker::Name.last_name,
+                         middle_name: Faker::Name.first_name,
+                         born: rand(25..55).year.ago,
+                         insurance_id: rand(11111111..22222222),
+                         doctor_id: doctor.id)
+  puts doctor_details
+  doctor_details.save
 end
 
 

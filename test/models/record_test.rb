@@ -5,12 +5,12 @@
 #  id         :integer          not null, primary key
 #  doctor_id  :integer
 #  patient_id :integer
-#  date_start :date
-#  date_end   :date
 #  confirm    :boolean          default(FALSE)
 #  finish     :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  date_start :datetime
+#  date_end   :datetime
 #
 
 require 'test_helper'

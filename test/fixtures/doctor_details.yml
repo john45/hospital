@@ -1,16 +1,16 @@
 # == Schema Information
 #
-# Table name: records
+# Table name: doctor_details
 #
-#  id         :integer          not null, primary key
-#  doctor_id  :integer
-#  patient_id :integer
-#  confirm    :boolean          default(FALSE)
-#  finish     :boolean          default(FALSE)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  date_start :datetime
-#  date_end   :datetime
+#  id           :integer          not null, primary key
+#  first_name   :string
+#  last_name    :string
+#  middle_name  :string
+#  born         :date
+#  insurance_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  doctor_id    :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
