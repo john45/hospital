@@ -30,11 +30,15 @@
         <!-- <td style="width: 50px;"><%#= link_to 'add event to GC', new_event_path(session[:calendar_id]), record_id: record.id, method: 'POST' %></td> -->
 
         <td style="width: 50px;">
-          <%= link_to 'add event to GC', { controller: 'google_auths',
-                                           action: 'new_event',
-                                           record_id: record.id,
-                                           calendar_id: session[:calendar_id] },
-                                        method: 'POST' if record.date_start >= Time.now %>
+          <% unless session[:calendar_id] %>
+            <%= link_to 'Login to google for add in calendar', redirect_url %>
+          <% else %>
+            <%= link_to 'add event to GC', { controller: 'google_auths',
+                                             action: 'new_event',
+                                             record_id: record.id,
+                                             calendar_id: session[:calendar_id] },
+                                          method: 'POST' if record.date_start >= Time.now %>
+          <% end %>
         </td>
       </tr>
     <% end %>

@@ -24,7 +24,13 @@ class GoogleAuthsController < ApplicationController
 
     session[:authorization] = response
 
-    redirect_to calendars_url
+    service = Google::Apis::CalendarV3::CalendarService.new
+    service.authorization = client
+
+    @calendar_list = service.list_calendar_lists
+    session[:calendar_id] = @calendar_list.items.first.id
+
+    redirect_to patient_path(current_patient.id)
   end
 
   def calendars
@@ -70,6 +76,7 @@ class GoogleAuthsController < ApplicationController
 
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client
+
 
     today = Date.today
 

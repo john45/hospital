@@ -4,6 +4,5 @@ class PatientsController < ApplicationController
     @records = @patient.records
   end
 
-  def edit
-  end
+  def edit;end
 end
