@@ -10,7 +10,7 @@ class RecordsController < ApplicationController
   end
 
   def new
-    @ds = Time.parse(params[:choice_date]) + params[:date_start].to_i.hour + 3.hour
+    @ds = Time.parse(params[:choice_date]) + params[:date_start].to_i.hour
     @doctor = Doctor.find(params[:doctor_id])
 
     @record = @doctor.records.build(patient_id: current_patient.id,
